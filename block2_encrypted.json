@@ -1,0 +1,77 @@
+{
+  "_commento": "BLOCCO 2 - cifrato Paillier. Griglia IDENTICA a quella del blocco 1: stessi modelli, teste, algoritmi, learning rate e configurazioni di client. Le uniche differenze ammesse sono encryption_mode, che e' l'oggetto dell'esperimento, e port, che e' infrastrutturale. La cella 2 del pannello verifica la simmetria e segnala qualunque scostamento. Condivide base_csv_path con il blocco 1, quindi la deduplica salta le run gia' fatte.",
+  "ip_address": "127.0.0.1",
+  "port": 5201,
+  "base_csv_path": "csv",
+  "base_log_path": "logs",
+  "base_plot_path": "static/plots",
+  "base_split_data_path": "run_dataset",
+  "early_stop_patience": 5,
+  "weighted_aggregation": true,
+  "datasets": [
+    {
+      "name": "road_signs_binary",
+      "path": "dataset/road_signs_binary",
+      "num_classes": 2
+    }
+  ],
+  "common_search_space": {
+    "encryption_mode": [
+      "direct_encrypted_update"
+    ],
+    "device": [
+      "cuda"
+    ],
+    "global_epoch": [
+      20
+    ],
+    "local_epoch": [
+      3
+    ],
+    "num_clients": [
+      4,
+      8,
+      10
+    ],
+    "models_percentage": [
+      1
+    ],
+    "learning_rate": [
+      0.01,
+      0.001,
+      0.0001
+    ],
+    "batch_size": [
+      16
+    ],
+    "aggregation_algorithm": [
+      "FedAvg",
+      "FedProx",
+      "FedLC"
+    ],
+    "fedprox_mu": [
+      0.05
+    ]
+  },
+  "model_specific_search_space": {
+    "ResNet18": {
+      "image_size": [
+        224
+      ],
+      "num_custom_layers": [
+        2,
+        4
+      ]
+    },
+    "DeiT-Tiny": {
+      "image_size": [
+        224
+      ],
+      "num_custom_layers": [
+        2,
+        4
+      ]
+    }
+  },
+  "torch_threads": 1
+}

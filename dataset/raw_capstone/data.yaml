@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 7
+names: ['- collaborate with your team on computer vision projects', '- understand and search unstructured image data', 'Broken', 'Clean', 'Damaged Traffic Signs - v3 2026-01-31 6-14pm', 'Roboflow is an end-to-end computer vision platform that helps you', 'Vandalize']
+
+roboflow:
+  workspace: giovanni-russo
+  project: testtt-brf7x-iflry
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/giovanni-russo/testtt-brf7x-iflry/dataset/1

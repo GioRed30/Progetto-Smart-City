@@ -1,0 +1,77 @@
+{
+  "_commento": "BLOCCO 1 - in chiaro. 108 run: 2 modelli x 2 profondita' di head x 3 algoritmi x 3 learning rate x 3 configurazioni di client. Risponde a: quale backbone, quale profondita', quale algoritmo, quanti client. Condivide base_csv_path con il blocco 2, quindi la deduplica per fingerprint funziona fra i due. torch_threads limita il pool intra-op di PyTorch per contenere il carico CPU.",
+  "ip_address": "127.0.0.1",
+  "port": 5001,
+  "base_csv_path": "csv",
+  "base_log_path": "logs",
+  "base_plot_path": "static/plots",
+  "base_split_data_path": "run_dataset",
+  "early_stop_patience": 5,
+  "weighted_aggregation": true,
+  "datasets": [
+    {
+      "name": "road_signs_binary",
+      "path": "dataset/road_signs_binary",
+      "num_classes": 2
+    }
+  ],
+  "common_search_space": {
+    "encryption_mode": [
+      "no_encryption"
+    ],
+    "device": [
+      "cuda"
+    ],
+    "global_epoch": [
+      20
+    ],
+    "local_epoch": [
+      3
+    ],
+    "num_clients": [
+      4,
+      8,
+      10
+    ],
+    "models_percentage": [
+      1
+    ],
+    "learning_rate": [
+      0.01,
+      0.001,
+      0.0001
+    ],
+    "batch_size": [
+      16
+    ],
+    "aggregation_algorithm": [
+      "FedAvg",
+      "FedProx",
+      "FedLC"
+    ],
+    "fedprox_mu": [
+      0.05
+    ]
+  },
+  "model_specific_search_space": {
+    "ResNet18": {
+      "image_size": [
+        224
+      ],
+      "num_custom_layers": [
+        2,
+        4
+      ]
+    },
+    "DeiT-Tiny": {
+      "image_size": [
+        224
+      ],
+      "num_custom_layers": [
+        2,
+        4
+      ]
+    }
+  },
+  "torch_threads": 1
+}
